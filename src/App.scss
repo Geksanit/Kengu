@@ -1,0 +1,19 @@
+.App {
+  height: 100vh;
+  background-color: #7f75b3;
+  header {
+    height: 200px;
+    padding: 50px;
+    text-align: center;
+    background-color: #bab4d7;
+  }
+  main {
+    height: calc(100% - 200px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  canvas {
+    background: #fff;
+  }
+}

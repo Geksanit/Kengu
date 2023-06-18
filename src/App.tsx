@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./App.scss";
 import { createController } from "./mvc/mvc";
+import { Vector } from "vector2d";
 
 function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -16,10 +17,10 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h2>Kengu project</h2>
+        <h1>Kengu project</h1>
       </header>
       <main>
-        <canvas ref={canvasRef} width={1000} height={1000} />
+        <canvas ref={canvasRef} width={1000} height={600} />
       </main>
     </div>
   );

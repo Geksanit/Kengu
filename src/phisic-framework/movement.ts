@@ -1,20 +1,28 @@
-import { Item } from "./types";
+import { Object, PhisParams } from "./types";
 
-type Props = {
-  G: number;
-};
-
-export const gravity =
-  (props: Props) =>
-  (item: Item): Item => {
-    return { ...item, speed: { ...item.speed, y: item.speed.y - props.G } };
+export const applyGravity =
+  (props: PhisParams) =>
+  (item: Object): Object => {
+    return { ...item, speed: item.speed.add(props.G) };
   };
 
-export const move =
-  (props: {}) =>
-  (item: Item): Item => {
+export const applySpeed =
+  (props: PhisParams) =>
+  (item: Object): Object => {
     return {
       ...item,
-      pos: { x: item.pos.x + item.speed.x, y: item.pos.y + item.speed.y },
+      pos: item.pos.add(item.speed).mulS(props.speedC),
+    };
+  };
+
+export const applyMaxSpeed =
+  (props: PhisParams) =>
+  (item: Object): Object => {
+    return {
+      ...item,
+      speed:
+        item.speed.length() > props.maxSpeed
+          ? item.speed.normalise().mulS(props.maxSpeed)
+          : item.speed,
     };
   };
